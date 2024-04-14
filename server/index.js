@@ -9,6 +9,7 @@ const PORT = 3080;
 
 const corsOptions = {
   origin: `${baseUrl.client}`,
+  credentials: true,
 };
 
 const io = new Server({ cors: corsOptions });
