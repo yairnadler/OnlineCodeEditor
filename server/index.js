@@ -62,10 +62,11 @@ const eventListener = (socket) => {
 };
 
 const init = () => {
-  const server = app.listen(PORT, () => {});
-  const ioserver = io.listen(server);
 
-  ioserver.on("connection", (socket) => eventListener(socket));
 };
 
-init();
+const server = app.listen(PORT, () => {});
+const ioserver = io.listen(server);
+ioserver.on("connection", (socket) => eventListener(socket));
+
+// init();
