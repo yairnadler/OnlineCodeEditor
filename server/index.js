@@ -4,7 +4,7 @@ const { CodeBlocks } = require("./model/CodeBlocks");
 const { Server } = require("socket.io");
 const { baseUrl } = require("./constants");
 const app = express();
-const PORT = 3080;
+const PORT = 3000;
 
 const corsOptions = {
   origin: `${baseUrl.client}`,
