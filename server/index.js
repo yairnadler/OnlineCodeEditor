@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const { CodeBlocks } = require("./model/CodeBlocks");
 const { Server } = require("socket.io");
-const baseUrl } = "https://online-code-editor-client.vercel.app/"
+const baseUrl = "https://online-code-editor-client.vercel.app"
 
 const app = express();
 const PORT = 3080;
