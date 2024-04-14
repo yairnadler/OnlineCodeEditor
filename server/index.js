@@ -8,7 +8,7 @@ const app = express();
 const PORT = 3080;
 
 const corsOptions = {
-  origin: [""],
+  origin: ["https://online-code-editor-client.vercel.app"],
 };
 
 const io = new Server({ cors: corsOptions });
