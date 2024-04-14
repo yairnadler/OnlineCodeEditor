@@ -4,7 +4,7 @@ import CodeBlock from "./pages/CodeBlock";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useSocket from "./hooks/useSocket";
-import { baseServerURL } from "./Constants";
+const baseServerURL = "https://online-code-editor-server.vercel.app";
 
 function App() {
   const [allCodeblocks, setAllCodeblocks] = useState([]); // [ { id: 1, title: "Codeblock 1", code: "console.log('Hello World!')" }
@@ -15,7 +15,7 @@ function App() {
   const socket = useSocket(baseServerURL);
 
   useEffect(() => {
-    axios.get("https://online-code-editor-server.vercel.app/").then((res) => {
+    axios.get(`${baseServerURL}`).then((res) => {
       setAllCodeblocks([...res.data.CodeBlocks]);
       setCodeblocksTitles(
         res.data.CodeBlocks.map((codeblock) => codeblock.title)
