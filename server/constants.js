@@ -1,5 +1,5 @@
 const baseUrl = {
-  client: "https://online-code-editor-client.vercel.app",
+  client: "yairnadler.github.io/OnlineCodeEditor/",
   server: "http://localhost:3080",
 };
 
