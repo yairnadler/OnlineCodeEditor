@@ -1,1 +1,1 @@
-export const baseServerURL = "https://tomrossner.dev:3000/";
+export const baseServerURL = "http://tomrossner.dev:3000/";
