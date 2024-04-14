@@ -4,7 +4,6 @@ const { CodeBlocks } = require("./model/CodeBlocks");
 const { Server } = require("socket.io");
 const { baseUrl } = require("./constants");
 const app = express();
-const server = require("http").createServer(app);
 const PORT = 3000;
 
 const corsOptions = {
@@ -64,11 +63,9 @@ const eventListener = (socket) => {
 };
 
 const init = () => {
-
+  const server = app.listen(PORT, () => {});
+  const ioserver = io.listen(server);
+  ioserver.on("connection", (socket) => eventListener(socket));
 };
 
-// const server = app.listen(PORT, () => {});
-const ioserver = io.listen(server);
-ioserver.on("connection", (socket) => eventListener(socket));
-
-// init();
+init();
