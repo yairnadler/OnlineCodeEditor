@@ -8,8 +8,6 @@ const eventListener = (socket) => {
       isMentor = true;
       mentorSockerID = socket.id;
       socket.emit("position", { isMentor: true });
-    } else {
-      socket.emit("position", { isMentor: false });
     }
   });
   socket.on("code-send", (data) => {
