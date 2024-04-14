@@ -8,7 +8,7 @@ const app = express();
 const PORT = 3080;
 
 const corsOptions = {
-  origin: `${baseUrl.client}`,
+  origin: [""],
 };
 
 const io = new Server({ cors: corsOptions });
