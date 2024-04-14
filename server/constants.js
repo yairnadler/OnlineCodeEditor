@@ -1,5 +1,5 @@
 const baseUrl = {
-  client: "yairnadler.github.io/OnlineCodeEditor",
+  client: "https://yairnadler.github.io/OnlineCodeEditor",
   server: "http://localhost:3080",
 };
 

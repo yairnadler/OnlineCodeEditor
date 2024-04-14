@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const { CodeBlocks } = require("./model/CodeBlocks");
+const { Server } = require("socket.io");
+const { baseUrl } = require("./constants");
 const app = express();
 const PORT = 3000;
 
@@ -31,8 +33,35 @@ app.put("/codeblock/:id", (req, res) => {
   res.status(200).send("OK!");
 });
 
+let isMentor = false;
+let mentorSockerID = "";
+
+const eventListener = (socket) => {
+  socket.on("join-lobby", () => {
+    count = io.engine.clientsCount;
+    if (!isMentor) {
+      isMentor = true;
+      mentorSockerID = socket.id;
+      socket.emit("position", { isMentor: true });
+    }
+  });
+  socket.on("code-send", (data) => {
+    socket.broadcast.emit("code-recieve", data);
+  });
+
+  socket.on("disconnect", () => {
+    if (socket.id === mentorSockerID) {
+      isMentor = false;
+    }
+  });
+};
+
 const init = () => {
-  app.listen(PORT, () => {});
+  const server = app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+  const ioserver = io.listen(server);
+  eventListener(ioserver);
 };
 
 init();
