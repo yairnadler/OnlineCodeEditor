@@ -2,14 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const { CodeBlocks } = require("./model/CodeBlocks");
 const { Server } = require("socket.io");
-const baseUrl = "https://online-code-editor-client.vercel.app"
-
+const { baseUrl } = require("./constants");
 const app = express();
 const PORT = 3080;
 
 const corsOptions = {
-  origin: `${baseUrl}`,
-  credentials: true,
+  origin: `${baseUrl.client}`,
 };
 
 const io = new Server({ cors: corsOptions });
