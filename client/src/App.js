@@ -13,6 +13,7 @@ function App() {
   const [currentCode, setCurrentCode] = useState("");
   const [isMentor, setIsMentor] = useState(false);
   const socket = useSocket(baseServerURL);
+  axios.defaults.withCredentials = true;
 
   useEffect(() => {
     axios.get(`${baseServerURL}`).then((res) => {
