@@ -10,7 +10,7 @@ export default function useSocket(URL) {
     //   socketInstance.disconnect();
     //   setSocket(null);
     // };
-  }, []);
+  }, [URL]);
 
   return socket;
 }
