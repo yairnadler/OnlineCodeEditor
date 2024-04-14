@@ -4,6 +4,7 @@ const { CodeBlocks } = require("./model/CodeBlocks");
 const { Server } = require("socket.io");
 const { baseUrl } = require("./constants");
 const app = express();
+const server = require("http").createServer(app);
 const PORT = 3000;
 
 const corsOptions = {
@@ -35,13 +36,14 @@ app.put("/codeblock/:id", (req, res) => {
 
 let isMentor = false;
 let mentorSockerID = "";
+let count = 0;
 
 const eventListener = (socket) => {
   socket.on("join-lobby", () => {
     count = io.engine.clientsCount;
     console.log(count, "clients connected");
     console.log(isMentor);
-    if (!isMentor) {
+    if (count === 2) {
       isMentor = true;
       mentorSockerID = socket.id;
       socket.emit("position", { isMentor: true });
@@ -65,7 +67,7 @@ const init = () => {
 
 };
 
-const server = app.listen(PORT, () => {});
+// const server = app.listen(PORT, () => {});
 const ioserver = io.listen(server);
 ioserver.on("connection", (socket) => eventListener(socket));
 
