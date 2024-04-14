@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/OnlineCodeEditor/static/css/main.f52d726c.css",
-    "main.js": "/OnlineCodeEditor/static/js/main.df6773e7.js",
+    "main.js": "/OnlineCodeEditor/static/js/main.fe656fea.js",
     "static/js/453.419a5d54.chunk.js": "/OnlineCodeEditor/static/js/453.419a5d54.chunk.js",
     "index.html": "/OnlineCodeEditor/index.html",
     "main.f52d726c.css.map": "/OnlineCodeEditor/static/css/main.f52d726c.css.map",
-    "main.df6773e7.js.map": "/OnlineCodeEditor/static/js/main.df6773e7.js.map",
+    "main.fe656fea.js.map": "/OnlineCodeEditor/static/js/main.fe656fea.js.map",
     "453.419a5d54.chunk.js.map": "/OnlineCodeEditor/static/js/453.419a5d54.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f52d726c.css",
-    "static/js/main.df6773e7.js"
+    "static/js/main.fe656fea.js"
   ]
 }
