@@ -1,6 +1,6 @@
 const baseUrl = {
-  client: "http://localhost:3000",
-  server: "http://localhost:3080",
+  client: "https://online-code-editor-client.vercel.app",
+  server: "https://online-code-editor-server.vercel.app",
 };
 
 module.exports = { baseUrl };
