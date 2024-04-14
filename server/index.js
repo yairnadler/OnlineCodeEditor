@@ -39,6 +39,7 @@ let mentorSockerID = "";
 const eventListener = (socket) => {
   socket.on("join-lobby", () => {
     count = io.engine.clientsCount;
+    console.log(isMentor);
     if (!isMentor) {
       isMentor = true;
       mentorSockerID = socket.id;
