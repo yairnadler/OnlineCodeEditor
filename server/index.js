@@ -35,14 +35,11 @@ app.put("/codeblock/:id", (req, res) => {
 
 let isMentor = false;
 let mentorSockerID = "";
-let count = 0;
 
 const eventListener = (socket) => {
   socket.on("join-lobby", () => {
     count = io.engine.clientsCount;
-    console.log(count, "clients connected");
-    console.log(isMentor);
-    if (count === 2) {
+    if (!isMentor) {
       isMentor = true;
       mentorSockerID = socket.id;
       socket.emit("position", { isMentor: true });
