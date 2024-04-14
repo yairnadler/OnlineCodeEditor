@@ -4,7 +4,7 @@ import CodeBlock from "./pages/CodeBlock";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useSocket from "./hooks/useSocket";
-const baseServerURL = "https://online-code-editor-server.vercel.app/";
+import { baseServerURL } from "./Constants";
 
 function App() {
   const [allCodeblocks, setAllCodeblocks] = useState([]); // [ { id: 1, title: "Codeblock 1", code: "console.log('Hello World!')" }
