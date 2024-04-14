@@ -15,7 +15,7 @@ function App() {
   const socket = useSocket(baseServerURL);
 
   useEffect(() => {
-    axios.get(`${baseServerURL}`).then((res) => {
+    axios.get("https://online-code-editor-server.vercel.app/").then((res) => {
       setAllCodeblocks([...res.data.CodeBlocks]);
       setCodeblocksTitles(
         res.data.CodeBlocks.map((codeblock) => codeblock.title)
