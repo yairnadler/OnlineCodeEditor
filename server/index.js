@@ -3,8 +3,10 @@ const cors = require("cors");
 const { CodeBlocks } = require("./model/CodeBlocks");
 const { Server } = require("socket.io");
 const { baseUrl } = require("./constants");
+require("dotenv").config();
+
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const corsOptions = {
   origin: `${baseUrl.client}`,
@@ -61,7 +63,35 @@ const init = () => {
     console.log(`Server is running on port ${PORT}`);
   });
   const ioserver = io.listen(server);
-  eventListener(ioserver);
+  ioserver.on("connection", (socket) => eventListener(socket));
 };
 
-init();
+if (process.env.NODE_ENV !== "production") {
+  init();
+} else {
+  // Production environment
+  const https = require("https");
+  const fs = require("fs");
+  const path = require("path");
+
+  const certPath = path.resolve(process.env.CERT_PATH);
+  const certFilePath = path.join(certPath, "fullchain.pem");
+  const privateKeyPath = path.join(certPath, "privkey.pem");
+
+  const certificate = fs.readFileSync(certFilePath);
+  const privateKey = fs.readFileSync(privateKeyPath);
+
+  const options = {
+    key: privateKey,
+    cert: certificate,
+  };
+
+  const https_Server = https.createServer(options, app);
+  const https_socketServer = new Server(https_Server);
+
+  https_Server.listen(PORT, () => {
+    console.log("Running...");
+  });
+
+  https_socketServer.on("connection", (socket) => eventListener(socket));
+}

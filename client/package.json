@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yairnadler.github.io/CodeEditorFront",
+  "homepage": "https://yairnadler.github.io/CodeEditorFront/",
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.2",
     "@monaco-editor/react": "^4.6.0",

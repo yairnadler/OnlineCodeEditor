@@ -10,7 +10,9 @@ function App() {
   const [allCodeblocks, setAllCodeblocks] = useState([]); // [ { id: 1, title: "Codeblock 1", code: "console.log('Hello World!')" }
   const [codeblocksTitles, setCodeblocksTitles] = useState([]);
   const [codes, setCodes] = useState("");
+  const [solutions, setSolutions] = useState([""]);
   const [currentCode, setCurrentCode] = useState("");
+  const [currentSolution, setCurrentSolution] = useState("");
   const [isMentor, setIsMentor] = useState(false);
   const socket = useSocket(baseServerURL);
 
@@ -21,6 +23,7 @@ function App() {
         res.data.CodeBlocks.map((codeblock) => codeblock.title)
       );
       setCodes(res.data.CodeBlocks.map((codeblock) => codeblock.code));
+      setSolutions(res.data.CodeBlocks.map((codeblock) => codeblock.solution));
     });
   }, []);
 
@@ -35,7 +38,7 @@ function App() {
 
   return (
     <div>
-      <BrowserRouter>
+      <BrowserRouter basename="/CodeEditorFront">
         <Routes>
           <Route
             index
@@ -43,8 +46,8 @@ function App() {
               <Lobby
                 codeblocks={allCodeblocks}
                 titles={codeblocksTitles}
-                codes={codes}
                 setCurrentCode={setCurrentCode}
+                setCurrentSolution={setCurrentSolution}
                 heading="CHOOSE CODE BLOCK"
               />
             }
@@ -52,7 +55,11 @@ function App() {
           <Route
             path="/codeblock/:id"
             element={
-              <CodeBlock currentCode={currentCode} isMentor={isMentor} />
+              <CodeBlock
+                currentCode={currentCode}
+                currentSolution={currentSolution}
+                isMentor={isMentor}
+              />
             }
           />
         </Routes>

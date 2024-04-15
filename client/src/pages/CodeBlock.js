@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Editor from "../components/Editor";
+import axios from "axios";
+import { baseServerURL } from "../Constants";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function CodeBlock(props) {
-  const { currentCode, isMentor } = props;
+  const { currentCode, isMentor, currentSolution, currentID } = props;
   const [javascriptCode, setJavascriptCode] = useState("");
 
   useEffect(() => {
@@ -23,7 +25,9 @@ export default function CodeBlock(props) {
           isMentor={isMentor}
         />
       </div>
-      <button className="btn btn-primary">submit</button> 
+      <button className="btn btn-primary" disabled={isMentor}>
+        submit
+      </button>
     </>
   );
 }
