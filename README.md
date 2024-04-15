@@ -1,4 +1,4 @@
-﻿# OnlineCodeEditor
+﻿# Online Code Editor
 
 <p>
 This project implements a program for a JS mentor and student.<br />
@@ -8,6 +8,4 @@ The project runs on a localhost<br />
 To run the application, clone the repo to your IDE (I used VScode) and delete the package-lock.json files from both the client and server folders. After that run the command 'npm install' in both folders. When that is done, run 'npm start' in the client folder to start  the client side, and run 'npm run dev' in the serve folder to intialze the server.
 TODO:<br />
 1. Implement functionality of submit button to compare student's code to a solution.<br />
-2. Deploy to enable program to work outside of a localhost.<br />
-3. ? Use of external DB ?
 </p>
