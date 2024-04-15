@@ -6,10 +6,6 @@ export default function useSocket(URL) {
   useEffect(() => {
     const socketInstance = io(`${URL}`, { transports: ["websocket"] });
     setSocket(socketInstance);
-    // return () => {
-    //   socketInstance.disconnect();
-    //   setSocket(null);
-    // };
   }, []);
 
   return socket;
