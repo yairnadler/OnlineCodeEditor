@@ -1,0 +1,1 @@
+export const baseServerURL = process.env.NODE_ENV === "production" ? process.env.REACT_APP_SERVER_URL : process.env.REACT_APP_LOCAL_SERVER_URL;

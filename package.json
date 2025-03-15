@@ -1,0 +1,10 @@
+{
+    "name": "online-code-editor",
+    "scripts": {
+        "build": "babel src -d lib"
+    },
+    "dependencies": {
+        "bootstrap": "^5.3.3",
+        "gh-pages": "^6.1.1"
+    }
+}
